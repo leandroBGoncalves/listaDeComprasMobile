@@ -1,11 +1,15 @@
 import React, { Component } from "react";
-import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Button, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import MyLogoImg from "../../../assets/logoMenor.png";
-import { Ionicons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 
-export default function TelaLogin() {
-    const [value, onChangeText] = React.useState('');
+export default function TelaLogin({ navigation }) {
+    const [newEmail, setNewEmail] = React.useState('');
+    const [enterPassword, setEnterPassword] = React.useState('');
+
+    function AcessCadastro() {
+      navigation.navigate('Cadastro');
+    }
 
   return (
     <View style={styles.container}>
@@ -16,28 +20,34 @@ export default function TelaLogin() {
         <Text style={styles.titleLogin}>Seja bem vindo</Text>
         <Text style={styles.subTitleLogin}>
           Digite seu E-mail e sua senha, ou{" "}
-          <Text style={styles.linkSubTitleCadastro}>cadastre-se agora</Text>
+          <Text 
+          style={styles.linkSubTitleCadastro}
+          onPress={AcessCadastro}
+          >
+            cadastre-se agora
+          </Text>
           <Feather name="external-link" size={16} color="#1d3557" />
         </Text>
         <TextInput 
         style={styles.inputEmail}
-        onChangeText={text => onChangeText(text)}
-        value={value}
+        onChangeText={text => setNewEmail(text)}
+        value={newEmail}
         placeholder= 'Digite aqui seu E-mail'
         keyboardType= 'email-address'
         textContentType= 'emailAddress'
         />
         <TextInput 
         style={styles.inputEmail}
-        onChangeText={text => onChangeText(text)}
-        value={value}
+        onChangeText={text => setEnterPassword(text)}
+        value={enterPassword}
         placeholder= 'Digite aqui sua senha'
         keyboardType= 'numeric'
-        textContentType= 'emailAddress'
+        textContentType= 'newPassword'
         />
         <Text style={styles.esqueciSenhaleLogin}>Esqueci a Senha!</Text>
         <TouchableOpacity
         style={styles.buttonLoginEntrar}
+        onPress={AcessCadastro}
         >
             <Text style={styles.textButtonEntrar}>Entrar</Text>
         </TouchableOpacity>

@@ -1,9 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import TelaLogin from './src/components/login/';
 import AppLoading from 'expo-app-loading';
 import { Sora_100Thin, Sora_400Regular, Sora_600SemiBold, Sora_700Bold, useFonts } from '@expo-google-fonts/sora';
+import { Routes } from './src/routes';
+import { NavigationContainer } from '@react-navigation/native';
 
 
 export default function App() {
@@ -18,9 +19,9 @@ export default function App() {
     return <AppLoading />;
   } else {
   return (
-    <View style={styles.container}>
-      <TelaLogin />
-    </View>
+    <NavigationContainer>
+      <Routes />
+    </NavigationContainer>
   );
  }
 }
