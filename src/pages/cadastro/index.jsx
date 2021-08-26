@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { ScrollView, StyleSheet, View, Image, TouchableOpacity, Text, TextInput } from "react-native";
-import { MaskedTextInput } from "react-native-mask-text";
+import { TextInputMask } from "react-native-masked-text"
 
 
 import MyLogoImg from "../../../assets/logoMenor.png";
@@ -8,6 +8,10 @@ import MyLogoImg from "../../../assets/logoMenor.png";
 
 
 export default function CadastroTela() {
+    const [isCellNumber, setIsCellNumber] = useState('')
+    const [isDateNacimento, setIsDateNacimento] = useState('')
+    const [isPassword, setIsPasswor] = useState('')
+    const [isConfirmPassword, setIsConfirmPassword] = useState('')
 
     function handleSubmit(data) {
         console.log(data);
@@ -39,12 +43,58 @@ export default function CadastroTela() {
                      textContentType= 'namePrefix'
                     />
                     <View style={styles.divInputNumber}>
-                        <TextInput
-                         style={styles.inputNumberCadastro}
-                         placeholder= '00/00/0000'
-                         keyboardType= 'number-pad'
+                    <View style={styles.divLabelInput}>
+                    <Text style={styles.textLabelInput}>Data de Nascimento</Text>       
+                    <TextInputMask 
+                        style={styles.inputNumberCadastro}
+                        type='datetime'
+                        placeholder="00/00/0000"
+                        options={{
+                            format: 'DD/MM/YYYY'
+                        }}
+                        value={isDateNacimento}
+                        onChangeText={text => setIsDateNacimento(text)}
                         />
-
+                    </View> 
+                    <View style={styles.divLabelInput}>
+                    <Text style={styles.textLabelInput}>Telefone Celular</Text> 
+                        <TextInputMask 
+                        style={styles.inputNumberCadastro}
+                        type='cel-phone'
+                        placeholder="(99) 99999-9999"
+                        options={{
+                            maskType: 'BRL',
+                            withDDD: true,
+                            dddMask: '(99) '
+                        }}
+                        value={isCellNumber}
+                        onChangeText={text => setIsCellNumber(text)}
+                        />
+                    </View> 
+                    </View>
+                    <View style={styles.divInputNumber}>
+                    <View style={styles.divLabelInput}>
+                    <Text style={styles.textLabelInput}>Crie uma senha</Text>       
+                    <TextInput 
+                        style={styles.inputNumberCadastro}
+                        placeholder= 'Max: 6 digitos'
+                        secureTextEntry={true}
+                        maxLength={6}
+                        value={isPassword}
+                        onChangeText={text => setIsPasswor(text)}
+                        />
+                    </View> 
+                    <View style={styles.divLabelInput}>
+                    <Text style={styles.textLabelInput}>Confirme sua senha</Text> 
+                    <TextInput 
+                        style={styles.inputNumberCadastro}
+                        placeholder= 'Max: 6 digitos'
+                        secureTextEntry={true}
+                        maxLength={6}
+                        value={isConfirmPassword}
+                        onChangeText={text => setIsConfirmPassword(text)}
+                        />
+                    </View> 
                     </View>
                     <TouchableOpacity
                     style={styles.buttonCadastro} 
@@ -79,7 +129,7 @@ const styles = StyleSheet.create({
         width: "100%",
         maxWidth: "90%",
         height: "100%",
-        maxHeight: 600,
+        maxHeight: 550,
         backgroundColor: "#F1FAEE",
         marginTop: 25,
         borderRadius: 13,
@@ -115,12 +165,12 @@ const styles = StyleSheet.create({
       },
 
       inputNumberCadastro: {
-        width: "45%",
+        width: "100%",
         height: 40,
         borderWidth: 1,
         borderRadius: 8,
         borderColor: "#E63946",
-        marginTop: 20,
+        marginTop: 0,
         padding: 5,
         color: "#1D3557",
         fontFamily: "Sora_400Regular",
@@ -143,6 +193,20 @@ const styles = StyleSheet.create({
           fontSize: 30,
           alignItems: "center",
           justifyContent: "center",
+      },
+
+      divLabelInput: {
+        flexDirection: "column",
+        width: "45%",
+        height: 50,
+        marginTop: 20,
+        justifyContent: "center",
+      },
+
+      textLabelInput: {
+        color: "#1D3557",
+        fontFamily: "Sora_400Regular",
+        fontSize: 13,
       }
 
 });
