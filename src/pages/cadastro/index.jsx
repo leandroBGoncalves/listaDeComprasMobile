@@ -1,5 +1,6 @@
 import React from "react";
-import { ScrollView, StyleSheet, View, Image, TouchableOpacity, Text } from "react-native";
+import { ScrollView, StyleSheet, View, Image, TouchableOpacity, Text, TextInput } from "react-native";
+import { MaskedTextInput } from "react-native-mask-text";
 
 
 import MyLogoImg from "../../../assets/logoMenor.png";
@@ -18,7 +19,33 @@ export default function CadastroTela() {
               <Image style={{ width: 100, height: 59.92 }} source={MyLogoImg} />
             </View>
             <ScrollView style={styles.contentFormCadastro}>
-                <Text>teste</Text>
+                    <Text style={styles.titleCadastro}>Preencha suas informações</Text>
+                    <TextInput 
+                     style={styles.inputTextCadastro}
+                     placeholder= 'Digite aqui seu E-mail'
+                     keyboardType= 'email-address'
+                     textContentType= 'emailAddress'
+                    />
+                    <TextInput 
+                     style={styles.inputTextCadastro}
+                     placeholder= 'Digite aqui seu Nome Completo'
+                     keyboardType= 'name-phone-pad'
+                     textContentType= 'name'
+                    />
+                    <TextInput 
+                     style={styles.inputTextCadastro}
+                     placeholder= 'Como voce gostaria de ser chamado'
+                     keyboardType= 'name-phone-pad'
+                     textContentType= 'namePrefix'
+                    />
+                    <View style={styles.divInputNumber}>
+                        <TextInput
+                         style={styles.inputNumberCadastro}
+                         placeholder= '00/00/0000'
+                         keyboardType= 'number-pad'
+                        />
+
+                    </View>
                     <TouchableOpacity
                     style={styles.buttonCadastro} 
                     onPress={handleSubmit}
@@ -56,16 +83,49 @@ const styles = StyleSheet.create({
         backgroundColor: "#F1FAEE",
         marginTop: 25,
         borderRadius: 13,
+        padding: 20,
 
     },
+
+    titleCadastro: {
+        textAlign: "center",
+        alignItems: "center",
+        justifyContent: "center",
+        color: "#1D3557",
+        fontSize: 30,
+        fontFamily: "Sora_700Bold",
+    },
     
-    inputText: {
+    inputTextCadastro: {
         width: "100%",
         height: 40,
         borderWidth: 1,
         borderRadius: 8,
         borderColor: "#E63946",
-    },
+        marginTop: 20,
+        padding: 5,
+        color: "#1D3557",
+        fontFamily: "Sora_400Regular",
+    
+      },
+
+      divInputNumber: {
+          flexDirection: "row",
+          justifyContent: "space-between",
+      },
+
+      inputNumberCadastro: {
+        width: "45%",
+        height: 40,
+        borderWidth: 1,
+        borderRadius: 8,
+        borderColor: "#E63946",
+        marginTop: 20,
+        padding: 5,
+        color: "#1D3557",
+        fontFamily: "Sora_400Regular",
+    
+      },
 
     buttonCadastro: {
         width: "100%",
