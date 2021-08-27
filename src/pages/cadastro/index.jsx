@@ -1,21 +1,25 @@
 import React, { useState } from "react";
 import { ScrollView, StyleSheet, View, Image, TouchableOpacity, Text, TextInput } from "react-native";
+
 import { TextInputMask } from "react-native-masked-text"
+import { AntDesign } from '@expo/vector-icons';
+
 
 
 import MyLogoImg from "../../../assets/logoMenor.png";
 
 
 
-export default function CadastroTela() {
+export default function CadastroTela({ navigation }) {
     const [isCellNumber, setIsCellNumber] = useState('')
     const [isDateNacimento, setIsDateNacimento] = useState('')
     const [isPassword, setIsPasswor] = useState('')
     const [isConfirmPassword, setIsConfirmPassword] = useState('')
 
-    function handleSubmit(data) {
-        console.log(data);
-    }
+
+    function AcessDashaboard() {
+        navigation.navigate('Dashaboard');
+      }
 
     return (
         <View style={styles.containerCadastro}>
@@ -74,7 +78,12 @@ export default function CadastroTela() {
                     </View>
                     <View style={styles.divInputNumber}>
                     <View style={styles.divLabelInput}>
-                    <Text style={styles.textLabelInput}>Crie uma senha</Text>       
+                    <Text 
+                    style={styles.textLabelInput}
+                    >
+                        Crie uma senha
+                        <AntDesign name="infocirlceo" size={11} color="black" />
+                    </Text>       
                     <TextInput 
                         style={styles.inputNumberCadastro}
                         placeholder= 'Max: 6 digitos'
@@ -98,7 +107,7 @@ export default function CadastroTela() {
                     </View>
                     <TouchableOpacity
                     style={styles.buttonCadastro} 
-                    onPress={handleSubmit}
+                    onPress={AcessDashaboard}
                     >
                      <Text style={styles.textButtonCadastro}>Cadastrar</Text>
                     </TouchableOpacity>
