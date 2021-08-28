@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     width: "100%",
     backgroundColor: "#E63946",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-start",
   },
 
   logoImg: {
@@ -70,6 +70,7 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     justifyContent: "flex-start",
     paddingStart: 25,
+    marginTop: 15,
   },
 
   content: {

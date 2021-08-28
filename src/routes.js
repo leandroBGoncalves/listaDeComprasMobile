@@ -1,33 +1,39 @@
 import React from 'react';
 import 'react-native-gesture-handler';
 import { createStackNavigator } from '@react-navigation/stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
 
 
 import TelaLogin from './pages/login';
 import CadastroTela from './pages/cadastro';
 import DasheboardInitial from './pages/dashaboard/dasheboard';
+import CustonDrawer from './components/CustonDrawer/custonDrawer';
 
-const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
 export function Routes() {
     
   return (
  
-        <Stack.Navigator initialRouterName='Login'>
-            <Stack.Screen 
+        <Drawer.Navigator 
+        initialRouterName='Login'
+        drawerContent={props => <CustonDrawer {...props}/>}
+        >
+            <Drawer.Screen 
             name="Login" 
             component={TelaLogin} 
-            options={{headerShown: false}}
             />
-            <Stack.Screen 
+            <Drawer.Screen 
             name="Cadastro" 
             component={CadastroTela} 
             />
-            <Stack.Screen 
+            <Drawer.Screen 
             name="Dashaboard" 
             component={DasheboardInitial} 
             />
-        </Stack.Navigator>    
+        </Drawer.Navigator>
+        
 
   );
 }

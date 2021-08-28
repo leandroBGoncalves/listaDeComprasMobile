@@ -7,7 +7,7 @@ import { Routes } from './src/routes';
 import { NavigationContainer } from '@react-navigation/native';
 
 
-export default function App() {
+export default function App(props) {
   let [fontsLoaded] = useFonts({
     Sora_100Thin,
     Sora_400Regular,
