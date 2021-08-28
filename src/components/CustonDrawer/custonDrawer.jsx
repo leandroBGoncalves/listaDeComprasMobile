@@ -1,21 +1,61 @@
 import React from 'react';
 
-import { View, Text, Image, StyleSheet } from 'react-native';
-import { DrawerItem, DrawerContentScrollView } from '@react-navigation/drawer';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { DrawerItemList, DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
+
+import { Icon } from 'react-native'
+
+import { AntDesign } from '@expo/vector-icons'; 
+
+import ProfileImg from "../../../assets/PerfilLeandro.jpeg";
 
 
 export default function CustonDrawer(props) {
     return (
         <DrawerContentScrollView style={styles.Container} {...props}>
-            <Text>cheguei</Text>
+            <TouchableOpacity style={styles.boxProfileDrawer}>
+                <Image style={styles.AvatarDrawer} source={ProfileImg} />
+                <Text style={styles.textProfileDrawer}>Leandro Gonçalves</Text>
+            </TouchableOpacity>
+            <DrawerItemList {...props} />
+            <DrawerItem
+            label= "home"
+            icon={({ color, size }) => <AntDesign color="black" size={25} name="home"/>}
+            />
         </DrawerContentScrollView>
     );
-}
+} 
 
 
 
 const styles = StyleSheet.create({
     Container: {
-        backgroundColor: "#E63946",
+        backgroundColor: "#F1FAEE",
+        padding: 20,
+        borderWidth: 2,
+        borderColor: "#FFE8D6",
+
+    },
+
+    AvatarDrawer: {
+        maxWidth: 50,
+        maxHeight: 50,
+        borderRadius: 50,
+        borderWidth: 1,
+        borderColor: "#1D3557",
+        marginEnd: 7,
+    },
+
+    textProfileDrawer: {
+        fontFamily: "Sora_700Bold",
+        fontSize: 14,
+        color: "#1D3557",
+    },
+
+    boxProfileDrawer: {
+        flexDirection: "row",
+        alignItems: 'center',
+        justifyContent: "flex-start",
+        marginBottom: 15,
     }
 })

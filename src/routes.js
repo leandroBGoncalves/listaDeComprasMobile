@@ -22,14 +22,15 @@ export function Routes() {
         >
             <Drawer.Screen 
             name="Login" 
-            component={TelaLogin} 
+            component={TelaLogin}
+
             />
             <Drawer.Screen 
             name="Cadastro" 
             component={CadastroTela} 
             />
             <Drawer.Screen 
-            name="Dashaboard" 
+            name="Home" 
             component={DasheboardInitial} 
             />
         </Drawer.Navigator>
