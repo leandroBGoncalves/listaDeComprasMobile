@@ -10,17 +10,24 @@ import { AntDesign } from '@expo/vector-icons';
 import ProfileImg from "../../../assets/PerfilLeandro.jpeg";
 
 
-export default function CustonDrawer(props) {
+export default function CustonDrawer({ props, navigation }) {
+
+    function AcessHome() {
+        navigation.navigate("Home");
+      }
+
+
+
     return (
         <DrawerContentScrollView style={styles.Container} {...props}>
             <TouchableOpacity style={styles.boxProfileDrawer}>
                 <Image style={styles.AvatarDrawer} source={ProfileImg} />
                 <Text style={styles.textProfileDrawer}>Leandro Gonçalves</Text>
             </TouchableOpacity>
-            <DrawerItemList {...props} />
             <DrawerItem
-            label= "home"
-            icon={({ color, size }) => <AntDesign color="black" size={25} name="home"/>}
+            label={({ focused, color }) => <Text style={{ color: "#1D3557", fontFamily: "Sora_700Bold", fontSize: 14 }}>{focused ? 'Home' : 'Home'}</Text>}
+            icon={({ color, size }) => <AntDesign color="#1D3557" size={25} name="home"/>}
+            onPress={AcessHome}
             />
         </DrawerContentScrollView>
     );
@@ -57,5 +64,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: "flex-start",
         marginBottom: 15,
+    },
+
+    labelDrawerList: {
+        fontFamily: "Sora_700Bold",
+        fontSize: 14,
+        color: "#1D3557",
     }
 })
