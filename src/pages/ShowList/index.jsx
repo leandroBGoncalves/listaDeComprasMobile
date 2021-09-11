@@ -3,16 +3,10 @@ import { View, StyleSheet } from "react-native";
 import ListaCreated from "../../components/ListaForEditing";
 import NavBarList from "../../components/NavBarList/navBarList";
 
-export default function EditListPage({ navigation }) {
-
-
-    function AcessShowList() {
-        navigation.navigate('ShowList');
-    }
-
+export default function ShowList() {
     return (
         <View  style={styles.container}>
-            <NavBarList openShowList={AcessShowList}/>
+            <NavBarList />
             <ListaCreated/>
         </View>
     );

@@ -10,6 +10,7 @@ import CadastroTela from './pages/cadastro';
 import DasheboardInitial from './pages/dashaboard/dasheboard';
 import CustonDrawer from './components/CustonDrawer/custonDrawer';
 import EditListPage from './pages/EditList';
+import ShowList from './pages/ShowList';
 
 const Drawer = createDrawerNavigator();
 
@@ -39,6 +40,11 @@ export function Routes() {
             <Drawer.Screen 
             name="EditList" 
             component={EditListPage}
+            />
+
+            <Drawer.Screen 
+            name="ShowList" 
+            component={ShowList}
             />
         </Drawer.Navigator>
         
