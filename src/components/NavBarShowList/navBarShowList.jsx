@@ -6,7 +6,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import MyLogoImg from "../../../assets/logoMenor.png";
 import ProfileImg from "../../../assets/PerfilLeandro.jpeg";
 
-export default function NavBarList() {
+export default function NavBarShow() {
     return (
         <View style={styles.containerNav}>
             <View style={styles.contentNav}>
@@ -17,12 +17,6 @@ export default function NavBarList() {
                     <FontAwesome name="save" size={24} color="#1D3557" />
                     <Text style={styles.titleSaveList}>Salvar lista</Text>
                 </TouchableOpacity>
-                <View style={styles.contentProfile}>
-                    <Image style={styles.avatarProfile} source={ProfileImg}/>
-                    <Text style={styles.textProfileName}>
-                        Leandro
-                    </Text>
-                </View>
             </View>
         </View>
     )

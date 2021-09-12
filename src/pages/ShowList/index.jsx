@@ -1,13 +1,13 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import ListaCreated from "../../components/ListaForEditing";
-import NavBarList from "../../components/NavBarList/navBarList";
+import NavBarShow from "../../components/NavBarShowList/navBarShowList";
+import ShowListComponent from "../../components/ShowList";
 
 export default function ShowList() {
     return (
         <View  style={styles.container}>
-            <NavBarList />
-            <ListaCreated/>
+            <NavBarShow />
+            <ShowListComponent />
         </View>
     );
 }
